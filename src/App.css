@@ -1,0 +1,201 @@
+#tridiv {
+  perspective: 800px;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  font-size: 50%;
+}
+.face {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+.scene, .shape, .face, .face-wrapper, .cr {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+.scene {
+  width: 80em;
+  height: 80em;
+  top: 50%;
+  left: 50%;
+  margin: -40em 0 0 -40em;
+}
+.shape {
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 50%;
+}
+.face, .face-wrapper {
+  overflow: hidden;
+  transform-origin: 0 0;
+  backface-visibility: hidden;
+  /* hidden by default, prevent blinking and other weird rendering glitchs */
+}
+.face {
+  background-size: 100% 100%!important;
+  background-position: center;
+}
+.face-wrapper .face {
+  left: 100%;
+  width: 100%;
+  height: 100%
+}
+.photon-shader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%
+}
+.side {
+  left: 50%;
+}
+.cr, .cr .side {
+  height: 100%;
+}
+[class*="cylinder"] .tp {
+  transform: rotateX(90deg) translateY(-50%);
+}
+[class*="cylinder"] .bm {
+  transform: rotateX(-90deg) translateY(-50%);
+}
+[class*="cylinder"] .tp, [class*="cylinder"] .bm, [class*="cylinder"] .tp .photon-shader, [class*="cylinder"] .bm .photon-shader {
+  border-radius: 50%;
+}
+[class*="cylinder"] .bm {
+  top: 100%;
+}
+/* .cyl-1 styles */
+.cyl-1 {
+  transform:translate3D(0em, -0.0625em, 0.0625em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  opacity:1;
+  width:6em;
+  height:1.5em;
+  margin:-0.75em 0 0 -3em;
+}
+.cyl-1 .tp, .cyl-1 .bm {
+  width:6em;
+  height:6em;
+}
+.cyl-1 .side {
+  width:0.7535318993335632em;
+  height:1.5em;
+}
+.cyl-1 .s0 {
+  transform: rotateY(6.923076923076923deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s1 {
+  transform: rotateY(20.76923076923077deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s2 {
+  transform: rotateY(34.61538461538461deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s3 {
+  transform: rotateY(48.46153846153847deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s4 {
+  transform: rotateY(62.30769230769231deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s5 {
+  transform: rotateY(76.15384615384615deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s6 {
+  transform: rotateY(90deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s7 {
+  transform: rotateY(103.84615384615385deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s8 {
+  transform: rotateY(117.6923076923077deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s9 {
+  transform: rotateY(131.53846153846155deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s10 {
+  transform: rotateY(145.3846153846154deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s11 {
+  transform: rotateY(159.23076923076925deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s12 {
+  transform: rotateY(173.0769230769231deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s13 {
+  transform: rotateY(186.92307692307693deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s14 {
+  transform: rotateY(200.7692307692308deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s15 {
+  transform: rotateY(214.61538461538464deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s16 {
+  transform: rotateY(228.46153846153848deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s17 {
+  transform: rotateY(242.30769230769232deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s18 {
+  transform: rotateY(256.15384615384613deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s19 {
+  transform: rotateY(270deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s20 {
+  transform: rotateY(283.8461538461538deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s21 {
+  transform: rotateY(297.6923076923077deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s22 {
+  transform: rotateY(311.53846153846155deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s23 {
+  transform: rotateY(325.38461538461536deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s24 {
+  transform: rotateY(339.2307692307692deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s25 {
+  transform: rotateY(353.0769230769231deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .face, .cyl-1 .side {
+  background-color:white;
+}
+.cyl-1 .tp {
+  background-color:grey;
+}
+.cyl-1 .bm {
+  background-color:grey;
+}
+.cyl-1 .side {
+  background-color:black;
+}
+
+
+.abacus-column {
+  height: 400px;
+  position: relative;
+}
+
+.bead {
+  position:absolute;
+  height:20px;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.bead:active { 
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
