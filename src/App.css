@@ -179,6 +179,8 @@
 .abacus-column {
   height: 400px;
   position: relative;
+  margin: auto;
+  margin-top:50px;
 }
 
 .bead {
@@ -198,4 +200,39 @@
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+    opacity:.5;
+}
+
+.beadIcon {
+  height:20px;
+  width:20px;
+  border-radius:100px;
+  background-color:grey;
+}
+
+.middleBar {
+    width: 3px;
+    height: 100%;
+    background-color: black;
+    margin-left: 8px;
+}
+
+.minus {
+  margin-left:-8px;
+  cursor: pointer;
+  font-size:30px;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.plus {
+  margin-left:15px;
+  cursor: pointer;
+  font-size:30px;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }

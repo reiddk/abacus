@@ -25,7 +25,16 @@ class Bead extends Component {
 			currPosition = this.basePosition + (e.clientY - this.baseMouse);
 		}
 		this._input.style[this.bottomTop] = currPosition + 'px';
-		console.log(e);
+		if (this.props.bottom && this._input.getBoundingClientRect().top < this.bottom_of_top) {
+			this._input.style[this.bottomTop] = this.basePosition + 'px';
+			this.handleMouseUp();
+			this.props.addTop();
+		}
+		if (!this.props.bottom && this._input.getBoundingClientRect().bottom > this.top_of_bottom) {
+			this._input.style[this.bottomTop] = this.basePosition + 'px';
+			this.handleMouseUp();
+			this.props.addBottom();
+		}
 	}
 
 	handleMouseUp = () => {
@@ -43,16 +52,15 @@ class Bead extends Component {
 	handleBoundaries() {
 		this.handleMouseUp();
 		if (this.props.maxBottom > -1) {
-			this.top_of_bottom = document.getElementById('bottom_' + this.props.columnNum + '_' + this.props.maxBottom).getBoundingClientRect().bottom;
+			this.top_of_bottom = document.getElementById('bottom_' + this.props.columnNum + '_' + this.props.maxBottom).getBoundingClientRect().top;
 		} else if (this.props.maxBottom === -1) {
-			this.top_of_bottom = document.getElementById('bottom-' + this.props.columnNum).getBoundingClientRect().bottom;
+			this.top_of_bottom = document.getElementById('bottom-' + this.props.columnNum).getBoundingClientRect().top;
 		}
 		if (this.props.maxTop > -1) {
 			this.bottom_of_top = document.getElementById('top_' + this.props.columnNum + '_' + this.props.maxTop).getBoundingClientRect().bottom;
 		} else if (this.props.maxTop === -1) {
 			this.bottom_of_top = document.getElementById('top-' + this.props.columnNum).getBoundingClientRect().bottom;
 		}
-		console.log(this.props.columnNum, " ", this.top_of_bottom, " ", this.bottom_of_top);
 	}
 
 	componentDidMount() {
@@ -82,7 +90,7 @@ class Bead extends Component {
 		const self = this;
 			
 			return (
-				<div id={this.bottomTop + '_' + this.props.columnNum + '_' + this.props.position} ref={(el) => self._input = el} onMouseDown={() => this.dragIt()} className="bead" style={style}>hi</div>
+				<div id={this.bottomTop + '_' + this.props.columnNum + '_' + this.props.position} ref={(el) => self._input = el} onMouseDown={() => this.dragIt()} className="bead" style={style}><div className="beadIcon"></div></div>
 			);
 
 	}
