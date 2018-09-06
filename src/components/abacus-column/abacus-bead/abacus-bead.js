@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-const nullFunc = () => null;
-
 class Bead extends Component {
 
 	basePosition = -1;
