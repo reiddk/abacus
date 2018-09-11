@@ -9,8 +9,11 @@ class AbacusColumn extends Component {
 	}
 
 	componentDidMount() {
-		if (this.props.numBeads) {
+		if (this.props.numBeads && !this.props.defaultTop) {
 			this.setState({bottom: this.props.numBeads, numBeads: this.props.numBeads});
+		}
+		if (this.props.numBeads && this.props.defaultTop) {
+			this.setState({top: this.props.numBeads, numBeads: this.props.numBeads});
 		}
 	}
 
@@ -33,7 +36,14 @@ class AbacusColumn extends Component {
 			currBottom = max;
 		}
 		this.setState({bottom: currBottom, top: currTop});
-		this.props.updateTotal(currTop, this.props.columnNum);
+		let totalBeads = 0;
+		if (this.props.defaultTop) {
+			totalBeads = currBottom;
+		}
+		if (!this.props.defaultTop) {
+			totalBeads = currTop;
+		}
+		this.props.updateTotal(totalBeads, this.props.columnNum, this.props.which);
 	}
 
 	addBottomHandler(howMany = 1) {
@@ -55,7 +65,14 @@ class AbacusColumn extends Component {
 			currTop = max;
 		}
 		this.setState({bottom: currBottom, top: currTop});
-		this.props.updateTotal(currTop, this.props.columnNum);
+		let totalBeads = 0;
+		if (this.props.defaultTop) {
+			totalBeads = currBottom;
+		}
+		if (!this.props.defaultTop) {
+			totalBeads = currTop;
+		}
+		this.props.updateTotal(totalBeads, this.props.columnNum, this.props.which);
 	}
 
 	render() {
@@ -72,6 +89,11 @@ class AbacusColumn extends Component {
 			topArr.push(<Bead maxBottom={bottom-1} maxTop={top-1} key={i} columnNum={this.props.columnNum} position={i} bottom={false} addTop={this.addTopHandler.bind(this)} addBottom={this.addBottomHandler.bind(this)}/>);
 		}
 
+		let changeBeads = <div><span onClick={() => this.addBottomHandler()} className="minus">-</span><span onClick={() => this.addTopHandler()} className="plus">+</span></div>;
+		if (this.props.defaultTop) {
+			changeBeads = <div><span onClick={() => this.addTopHandler()} className="minus">-</span><span onClick={() => this.addBottomHandler()} className="plus">+</span></div>;
+		}
+
 		return (
 			<div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 abacus-column">
 				<div id={'top-' + this.props.columnNum} className="top-beads">
@@ -81,7 +103,7 @@ class AbacusColumn extends Component {
 					{bottomArr}
 				</div>
 				<div className="middleBar"></div>
-				<div><span onClick={() => this.addBottomHandler()} className="minus">-</span><span onClick={() => this.addTopHandler()} className="plus">+</span></div>
+				{changeBeads}
 			</div>
 		);
 	}
