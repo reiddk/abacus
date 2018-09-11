@@ -5,10 +5,17 @@ class Abacus extends Component {
 	state = {
 		number: 0,
 		columns: [
-			[{key: 0, numBeads: 2, total: 0, multiplier: 5000, top: true}, {key: 1, numBeads: 5, total: 0, multiplier: 1000, top: false}],
-			[{key: 2, numBeads: 2, total: 0, multiplier: 500, top: true}, {key: 3, numBeads: 5, total: 0, multiplier: 100, top: false}],
-			[{key: 4, numBeads: 2, total: 0, multiplier: 50, top: true}, {key: 5, numBeads: 5, total: 0, multiplier: 10, top: false}],
-			[{key: 6, numBeads: 2, total: 0, multiplier: 5, top: true}, {key: 7, numBeads: 5, total: 0, multiplier: 1, top: false}]
+			[{key: 0, numBeads: 2, total: 0, multiplier: Math.pow(16,3), top: true, points: 5}, 
+			{key: 1, numBeads: 5, total: 0, multiplier: Math.pow(16,3), top: false, points: 1}],
+
+			[{key: 2, numBeads: 2, total: 0, multiplier: Math.pow(16,2), top: true, points: 5}, 
+			{key: 3, numBeads: 5, total: 0, multiplier: Math.pow(16,2), top: false, points: 1}],
+
+			[{key: 4, numBeads: 2, total: 0, multiplier: 16, top: true, points: 5}, 
+			{key: 5, numBeads: 5, total: 0, multiplier: 16, top: false, points: 1}],
+
+			[{key: 6, numBeads: 2, total: 0, multiplier: 1, top: true, points: 5}, 
+			{key: 7, numBeads: 5, total: 0, multiplier: 1, top: false, points: 1}]
 		]
 	}
 
@@ -28,11 +35,13 @@ class Abacus extends Component {
 		const getColumns = [...this.state.columns];
 		let multiplier = null;
 		if (typeof which === 'number') {
+			let points = getColumns[index][which].points;
 			multiplier = getColumns[index][which].multiplier; 
-			getColumns[index][which].total = top * multiplier;
+			getColumns[index][which].total = top * points * multiplier;
 		} else {
+			let points = getColumns[index][which].points;
 			multiplier = getColumns[index].multiplier; 
-			getColumns[index].total = top * multiplier;
+			getColumns[index].total = top * points * multiplier;
 		}
 		const grandTotal = this.getTotals(getColumns);
 		this.setState({number: grandTotal, columns: getColumns});
