@@ -177,10 +177,10 @@
 
 
 .abacus-column {
-  height: 400px;
   position: relative;
   margin: auto;
   margin-top:50px;
+  height:100%;
 }
 
 .bead {
@@ -203,9 +203,12 @@
     opacity:.5;
 }
 
+.bottom-beads {
+  bottom: 0px;
+  position: absolute;
+}
+
 .beadIcon {
-  height:20px;
-  width:20px;
   border-radius:100px;
   background-color:grey;
 }
