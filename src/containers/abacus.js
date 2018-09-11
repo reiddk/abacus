@@ -5,10 +5,10 @@ class Abacus extends Component {
 	state = {
 		number: 0,
 		columns: [
-			[{numBeads: 2, total: 0, multiplier: 5000, top: true}, {numBeads: 5, total: 0, multiplier: 1000, top: false}],
-			[{numBeads: 2, total: 0, multiplier: 500, top: true}, {numBeads: 5, total: 0, multiplier: 100, top: false}],
-			[{numBeads: 2, total: 0, multiplier: 50, top: true}, {numBeads: 5, total: 0, multiplier: 10, top: false}],
-			[{numBeads: 2, total: 0, multiplier: 5, top: true}, {numBeads: 5, total: 0, multiplier: 1, top: false}]
+			[{key: 0, numBeads: 2, total: 0, multiplier: 5000, top: true}, {key: 1, numBeads: 5, total: 0, multiplier: 1000, top: false}],
+			[{key: 2, numBeads: 2, total: 0, multiplier: 500, top: true}, {key: 3, numBeads: 5, total: 0, multiplier: 100, top: false}],
+			[{key: 4, numBeads: 2, total: 0, multiplier: 50, top: true}, {key: 5, numBeads: 5, total: 0, multiplier: 10, top: false}],
+			[{key: 6, numBeads: 2, total: 0, multiplier: 5, top: true}, {key: 7, numBeads: 5, total: 0, multiplier: 1, top: false}]
 		]
 	}
 
@@ -42,11 +42,11 @@ class Abacus extends Component {
 		const columns = [...this.state.columns];
 		const columnsOut = columns.map((col, index) => {
 			if (col.constructor === Array) {
-				return col.map((col2, index2) => {
-					return <AbacusColumn updateTotal={this.updateTotalHandler.bind(this)} key={index + '-' +index2} columnNum={index} which={index2} numBeads={col2.numBeads} defaultTop={col2.top} />;
-				});
+				return <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 abacus-column">{col.map((col2, index2) => {
+					return <AbacusColumn updateTotal={this.updateTotalHandler.bind(this)} key={col2.key} columnNum={index} which={index2} numBeads={col2.numBeads} defaultTop={col2.top} />;
+				})}</div>;
 			} else {
-				return <AbacusColumn updateTotal={this.updateTotalHandler.bind(this)} key={index} columnNum={index} numBeads={col.numBeads} which={null} defaultTop={col.top} />;
+				return <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 abacus-column"><AbacusColumn updateTotal={this.updateTotalHandler.bind(this)} key={col.key} columnNum={index} numBeads={col.numBeads} which={null} defaultTop={col.top} /></div>;
 			}
 		});
 

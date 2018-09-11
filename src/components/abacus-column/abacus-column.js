@@ -80,13 +80,17 @@ class AbacusColumn extends Component {
 		const top = this.state.top;
 		const bottomArr = [];
 		const topArr = [];
+		let columnClass = this.props.columnNum + '-' + this.props.which;
+		if (this.props.which === null) {
+			columnClass = this.props.columnNum;
+		}
 
 		for (let i = 0; i < bottom; i++) {
-			bottomArr.push(<Bead maxBottom={bottom-1} maxTop={top-1} key={i} columnNum={this.props.columnNum} position={i} bottom={true} addTop={this.addTopHandler.bind(this)} addBottom={this.addBottomHandler.bind(this)}/>);
+			bottomArr.push(<Bead maxBottom={bottom-1} maxTop={top-1} key={i} columnNum={this.props.columnNum} position={i} bottom={true} addTop={this.addTopHandler.bind(this)} addBottom={this.addBottomHandler.bind(this)} columnClass={columnClass}/>);
 		}
 
 		for (let i = 0; i < top; i++) {
-			topArr.push(<Bead maxBottom={bottom-1} maxTop={top-1} key={i} columnNum={this.props.columnNum} position={i} bottom={false} addTop={this.addTopHandler.bind(this)} addBottom={this.addBottomHandler.bind(this)}/>);
+			topArr.push(<Bead maxBottom={bottom-1} maxTop={top-1} key={i} columnNum={this.props.columnNum} position={i} bottom={false} addTop={this.addTopHandler.bind(this)} addBottom={this.addBottomHandler.bind(this)} columnClass={columnClass}/>);
 		}
 
 		let changeBeads = <div><span onClick={() => this.addBottomHandler()} className="minus">-</span><span onClick={() => this.addTopHandler()} className="plus">+</span></div>;
@@ -94,12 +98,14 @@ class AbacusColumn extends Component {
 			changeBeads = <div><span onClick={() => this.addTopHandler()} className="minus">-</span><span onClick={() => this.addBottomHandler()} className="plus">+</span></div>;
 		}
 
+		const height = this.state.numBeads * 50;
+
 		return (
-			<div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 abacus-column">
-				<div id={'top-' + this.props.columnNum} className="top-beads">
+			<div style={{height: height + 'px', position: 'relative', marginBottom: '30px'}} >
+				<div id={'top-' + columnClass} className="top-beads">
 					{topArr}
 				</div>
-				<div id={'bottom-' + this.props.columnNum} className="bottom-beads">
+				<div id={'bottom-' + columnClass} className="bottom-beads">
 					{bottomArr}
 				</div>
 				<div className="middleBar"></div>
