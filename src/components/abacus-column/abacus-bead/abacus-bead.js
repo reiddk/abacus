@@ -39,9 +39,11 @@ class Bead extends Component {
 			this.basePosition[num] = Number(element.style[this.bottomTop].replace('px', ''));
 		}
 		let currPosition = null;
-		if (this.props.bottom) {
+		if (this.props.bottom && 
+			(this.basePosition[num] - (e.clientY - this.baseMouse) > this.basePosition[num])) {
 			currPosition = this.basePosition[num] - (e.clientY - this.baseMouse);
-		} else {
+		} else if (!this.props.bottom && 
+			(this.basePosition[num] + (e.clientY - this.baseMouse) > this.basePosition[num])) {
 			currPosition = this.basePosition[num] + (e.clientY - this.baseMouse);
 		}
 		element.style[this.bottomTop] = currPosition + 'px';
