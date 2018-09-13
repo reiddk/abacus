@@ -185,7 +185,6 @@
 
 .bead {
   position:absolute;
-  height:20px;
   cursor: move; /* fallback if grab cursor is unsupported */
   cursor: grab;
   cursor: -moz-grab;
@@ -200,7 +199,6 @@
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
-    opacity:.5;
 }
 
 .bottom-beads {
@@ -209,8 +207,9 @@
 }
 
 .beadIcon {
-  border-radius:100px;
-  background-color:grey;
+  height:25px;
+  width:62px;
+  margin-left: -13px;
 }
 
 .middleBar {
